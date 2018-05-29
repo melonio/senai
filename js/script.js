@@ -24,12 +24,14 @@ for(var i = 0; i < pacientes.length; i++)
     {
         pesoTrue = false;
         tdImc.textContent = "Altura inválida";
+        paciente.style.background = "lightcoral";
+        paciente.style.color = "white";
     }
 
     if(pesoTrue && alturaTrue)
     {
         var imc = peso/Math.pow(altura, 2);
-        Math.round(tdImc.textContent = imc);
+        Math.round(tdImc.textContent = imc.toFixed(2));
     }
 
     else
