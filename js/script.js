@@ -1,4 +1,6 @@
-var paciente = document.querySelector('#primeiro-paciente');
+var pacientes = document.querySelectorAll('.paciente');
+
+console.log(pacientes);
 
 var tdPeso = paciente.querySelector('.info-peso');
 var peso = tdPeso.textContent;
@@ -30,6 +32,12 @@ if(altura < 0 || altura > 3)
 if(pesoTrue && alturaTrue)
 {
     var imc = peso/Math.pow(altura, 2);
+    tdImc.textContent = imc;
+}
+
+else
+{
+    tdImc.textContent = "Valores inválidos!";
 }
 
 /*
