@@ -1,16 +1,44 @@
-LerPacientes();
+
 var pacientes = document.querySelectorAll('.paciente');
+LerPacientes();
 /*
 SEM LÓGICA!
 */
 
-var botaoAdicionar = querySelector('#adicionar-paciente');
+var botaoAdicionar = document.querySelector('#adicionar-paciente');
 botaoAdicionar.addEventListener("click", pegarDados);
 
 function pegarDados()
 {
     event.preventDefault();
-    console.log("Aqui estou");
+
+    var form = document.querySelector('#form-adiciona');
+    var nome = form.nome.value;
+    var peso = form.peso.value;
+    var altura = form.altura.value;
+    var gordura = form.gordura.value;
+
+    var pacienteTr = document.createElement('tr');
+
+    var nomeTd = document.createElement('td');
+    var alturaTd = document.createElement('td');
+    var pesoTd = document.createElement('td');
+    var gorduraTd = document.createElement('td');
+
+    nomeTd.textContent = nome;
+    alturaTd.textContent = altura;
+    pesoTd.textContent = peso;
+    gorduraTd.textContent = gordura;
+
+    pacienteTr.appendChild(nomeTd);
+    pacienteTr.appendChild(alturaTd);
+    pacienteTr.appendChild(pesoTd);
+    pacienteTr.appendChild(gorduraTd);
+
+
+    var tabela = document.querySelector('#tabela-pacientes');
+    tabela.appendChild(pacienteTr);
+    LerPacientes();
 }
 
 function LerPacientes()
@@ -33,7 +61,6 @@ function LerPacientes()
         if(peso < 0 | peso >= 500)
         {
             pesoTrue = false;
-            console.log("Peso inválido");
         }
 
         if(altura < 0 || altura > 3)
@@ -59,10 +86,6 @@ function mostraMensagem()
 {
     console.log("Olá, fui clicado!");
 }
-
-var botao = getElementById('adicionar-paciente');
-
-botao.addEventListener('click', adicionarPaciente);
 
 /*
 function adicionarPaciente()
