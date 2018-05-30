@@ -1,47 +1,13 @@
 
 var pacientes = document.querySelectorAll('.paciente');
-LerPacientes();
+lerPacientes();
 /*
 SEM LÓGICA!
 */
 
-var botaoAdicionar = document.querySelector('#adicionar-paciente');
-botaoAdicionar.addEventListener("click", pegarDados);
-
-function pegarDados()
-{
-    event.preventDefault();
-
-    var form = document.querySelector('#form-adiciona');
-    var nome = form.nome.value;
-    var peso = form.peso.value;
-    var altura = form.altura.value;
-    var gordura = form.gordura.value;
-
-    var pacienteTr = document.createElement('tr');
-
-    var nomeTd = document.createElement('td');
-    var alturaTd = document.createElement('td');
-    var pesoTd = document.createElement('td');
-    var gorduraTd = document.createElement('td');
-
-    nomeTd.textContent = nome;
-    alturaTd.textContent = altura;
-    pesoTd.textContent = peso;
-    gorduraTd.textContent = gordura;
-
-    pacienteTr.appendChild(nomeTd);
-    pacienteTr.appendChild(alturaTd);
-    pacienteTr.appendChild(pesoTd);
-    pacienteTr.appendChild(gorduraTd);
 
 
-    var tabela = document.querySelector('#tabela-pacientes');
-    tabela.appendChild(pacienteTr);
-    LerPacientes();
-}
-
-function LerPacientes()
+function lerPacientes()
 {
     for(var i = 0; i < pacientes.length; i++)
     {
@@ -72,12 +38,20 @@ function LerPacientes()
 
         if(pesoTrue && alturaTrue)
         {
-            var imc = peso/Math.pow(altura, 2);
-            Math.round(tdImc.textContent = imc.toFixed(2));
+            var imc = calculaImc(peso, altura);
+            tdImc.textContent = imc;
+        }
+
+        function calculaImc(peso, altura)
+        {
+            var imc = 0;
+            imc = peso / Math.pow(altura, 2);
+            return imc.toFixed(2);
         }
     }
 }
 
+/*
 var titulo = document.querySelector('.titulo');
 
 titulo.addEventListener('click', mostraMensagem);
@@ -86,6 +60,7 @@ function mostraMensagem()
 {
     console.log("Olá, fui clicado!");
 }
+*/
 
 /*
 function adicionarPaciente()
