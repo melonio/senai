@@ -1,47 +1,54 @@
 LerPacientes();
+var pacientes = document.querySelectorAll('.paciente');
+/*
+SEM LÓGICA!
+*/
+
+var botaoAdicionar = querySelector('#adicionar-paciente');
+botaoAdicionar.addEventListener("click", pegarDados);
+
+function pegarDados()
+{
+    event.preventDefault();
+    console.log("Aqui estou");
+}
+
 function LerPacientes()
 {
-    var pacientes = document.querySelectorAll('.paciente');
-
-for(var i = 0; i < pacientes.length; i++)
-{
-    var paciente = pacientes[i];
-    var tdPeso = paciente.querySelector('.info-peso');
-    var peso = tdPeso.textContent;
-
-    var tdAltura = paciente.querySelector('.info-altura');
-    var altura = tdAltura.textContent;
-
-    var tdImc = paciente.querySelector('.info-imc');
-
-    var pesoTrue = true;
-    var alturaTrue = true;
-    //s3n@il0b
-
-    if(peso < 0 | peso >= 500)
+    for(var i = 0; i < pacientes.length; i++)
     {
-        pesoTrue = false;
-        console.log("Peso inválido");
-    }
+        var paciente = pacientes[i];
+        var tdPeso = paciente.querySelector('.info-peso');
+        var peso = tdPeso.textContent;
 
-    if(altura < 0 || altura > 3)
-    {
-        pesoTrue = false;
-        tdImc.textContent = "Altura inválida";
-        paciente.classList.add('paciente-invalido');
-    }
+        var tdAltura = paciente.querySelector('.info-altura');
+        var altura = tdAltura.textContent;
 
-    if(pesoTrue && alturaTrue)
-    {
-        var imc = peso/Math.pow(altura, 2);
-        Math.round(tdImc.textContent = imc.toFixed(2));
-    }
+        var tdImc = paciente.querySelector('.info-imc');
 
-    else
-    {
-        tdImc.textContent = "Valores inválidos!";
+        var pesoTrue = true;
+        var alturaTrue = true;
+        //s3n@il0b
+
+        if(peso < 0 | peso >= 500)
+        {
+            pesoTrue = false;
+            console.log("Peso inválido");
+        }
+
+        if(altura < 0 || altura > 3)
+        {
+            pesoTrue = false;
+            tdImc.textContent = "Altura inválida";
+            paciente.classList.add('paciente-invalido');
+        }
+
+        if(pesoTrue && alturaTrue)
+        {
+            var imc = peso/Math.pow(altura, 2);
+            Math.round(tdImc.textContent = imc.toFixed(2));
+        }
     }
-}
 }
 
 var titulo = document.querySelector('.titulo');
@@ -57,6 +64,7 @@ var botao = getElementById('adicionar-paciente');
 
 botao.addEventListener('click', adicionarPaciente);
 
+/*
 function adicionarPaciente()
 {
     var tabela = document.getElementById('tabela-pacientes').innerHTML;
@@ -65,7 +73,7 @@ function adicionarPaciente()
     var pesoPac = parseFloat(getElementById('peso').value);
     var alturaPac = parseFloat(getElementById('altura').value);
     var gorduraPac = parseFloat(getElementById('gordura').value);
-    var string = 
+    var string =
     "<td class='info-nome'>"+nome+"</td>"
     "<td class='info-peso'>"+peso+"</td>"
     "<td class='info-altura'>"+altura+"</td>"
